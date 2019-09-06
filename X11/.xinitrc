@@ -39,5 +39,7 @@ fi
 ###   DWM   ###
 ###############
 
-## Run the startdwm script
-$HOME/bin/startdwm
+## Start DWM in a loop so we can reload it, and send any errors to a log file
+while true; do
+	dwm 2> ~/.dwm.log
+done
