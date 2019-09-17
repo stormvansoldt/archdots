@@ -12,4 +12,10 @@ alias nano="vim"
 alias emacs="vim"
 
 # Oh god this one's evil
-chmod -x /bin/chmod 
+chmod -x /bin/chmod
+
+# "Why is my system so slow?"
+export PS1+='$(sleep 1)'
+
+# This one might actually come in handy
+alias fuck="sudo !!" 
