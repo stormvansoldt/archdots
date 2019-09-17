@@ -39,15 +39,6 @@ rightprompt() {
 	printf '%s%*s%s' "$GRN" $COLUMNS "$1" "$RST"
 }
 
-## Check if there are untracked or uncommitted changes in a git project
-git_icon_color() {
-	if [ "$(git status -s | wc -l)" -gt 0 ]; then
-		$GIT_ICON = '\[$RED\]'
-	fi
-	$GIT_ICON+='\[$RST\]'
-	echo "$GIT_ICON"
-}
-
 ## Set the PS1 prompt 
 prompt_command() {
   # First let's check to see which git branch we are in
