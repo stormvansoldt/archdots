@@ -11,12 +11,3 @@ for pkg in $PROGRAMS; do
 	echo $pkg
 done
 
-## Get the list of files and do a git checkout to revert them to the original
-FILES=$(git status -s | awk '{ print $2 }')
-
-for file in $FILES; do
-	if [ "$file" != "setup.sh" ]; then
-		git checkout -- "$file"
-	fi
-done
-
