@@ -24,6 +24,8 @@ WHT="$(tput setaf 7)"
 RST="$(tput sgr0)"
 BOLD="$(tput bold)"
 
+GIT_ICON=""
+
 # The Editor variable needs to be exported for the system for some reason. no idea why.
 export EDITOR='vim'
 TMUXINATOR_CONFIG="${HOME}/.tmuxinator"
@@ -37,6 +39,15 @@ rightprompt() {
 	printf '%s%*s%s' "$GRN" $COLUMNS "$1" "$RST"
 }
 
+## Check if there are untracked or uncommitted changes in a git project
+git_icon_color() {
+	if [ "$(git status -s | wc -l)" -gt 0 ]; then
+		$GIT_ICON = '\[$RED\]'
+	fi
+	$GIT_ICON+='\[$RST\]'
+	echo "$GIT_ICON"
+}
+
 ## Set the PS1 prompt 
 prompt_command() {
   # First let's check to see which git branch we are in
@@ -47,8 +58,13 @@ prompt_command() {
   # If we are in a git repo, add the branch to the PS1 line and check to see
   # if changes need to be staged or committed to the branch
   if [ -n "$BRANCH" ]; then
-    ## Command that sets the text aligned to the right of the terminal
-    PS1+='\[$WHT\][ \[$GRN\]$BRANCH\[$WHT\]] '
+	PS1+='\[$GRN\]['
+	if [ "$(git status -s | wc -l)" -gt 0 ]; then
+		PS1+='\[$RED\]'
+	else
+		PS1+='\[$BLU\]'
+	fi
+	PS1+=' \[$WHT\]$BRANCH\[$GRN\]] '
 
   fi
   PS1+='\[$WHT\]\[$BOLD\]\$\[$RST\] '
