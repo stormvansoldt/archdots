@@ -2,11 +2,15 @@
 # ~/.bashrc
 #
 
+# All alias definitions are going into the .bash_aliases file
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 force_color_prompt=yes
-alias ls='ls --color=auto'
 
 #####################
 ###   VARIABLES   ###
