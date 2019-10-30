@@ -65,6 +65,7 @@ Plugin 'itchyny/lightline.vim'
 "Plugin 'edkolev/tmuxline.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'itchyny/vim-gitbranch'
+Plugin 'vimwiki/vimwiki'
 
 "" End Vundle stuff
 call vundle#end()
@@ -97,24 +98,10 @@ endfunction
 set laststatus=2    " Required for lightline to show up
 
 """"""""""""""
-"  TMUXLINE  "
+"  VIMWIKI   "
 """"""""""""""
-" Set tmuxline theme to lightline
-"let g:tmuxline_theme = 'lightline'
-
-" Turn off powerline icons
-"let g:tmuxline_powerline_separators = 0
-
-" Set a custom tmuxline preset
-"let g:tmuxline_preset = {
-"   \'a'    : '#a',
-"   \'b'    : '#W',
-"   \'c'    : '#(pwd)',
-"   \'win'  : '#I #W',
-"   \'cwin' : '#I #W',
-"   \'x'    : '%a',
-"   \'z'    : '#H'}
-
+" Set vimwiki to use markdown instead of wiki syntax
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 """""""""""""""""
 "  KEYBINDINGS  "
