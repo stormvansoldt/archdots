@@ -101,6 +101,7 @@ set laststatus=2    " Required for lightline to show up
 "  VIMWIKI   "
 """"""""""""""
 " Set vimwiki to use markdown instead of wiki syntax
+let g:vimwiki_global_ext = 0
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 """""""""""""""""
