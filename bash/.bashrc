@@ -78,4 +78,3 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 ## VARIABLES ##
 ###############
 export EDITOR='vim'
-
