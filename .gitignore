@@ -1,3 +1,4 @@
 ## VIM IGNORE ##
 bundle/
 .netrwhist
+.swp
