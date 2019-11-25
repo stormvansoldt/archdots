@@ -136,10 +136,11 @@ let g:netrw_browse_split = 4
 " Misc settings for netrw
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
-" augroup ProjectDrawer
-"   autocmd!
-"   autocmd VimEnter * :Lexplore
-" augroup END
+" Automatically open the file explorer
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Lexplore
+"augroup END
 
 set noshowmode      " Prevents the extra mode from displaying
 
