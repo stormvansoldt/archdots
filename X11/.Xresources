@@ -33,5 +33,8 @@ URxvt*color14:          wb_blue
 URxvt*color15:          white
 
 ## OTHER
-URxvt*scrollBar: false
+URxvt*scrollBar:		false
 
+## Font settings
+URxvt.font:				xft:TerminessTTF Nerd Font:size=16
+URxvt.letterSpace:		-1
