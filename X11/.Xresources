@@ -34,7 +34,8 @@ URxvt*color15:          white
 
 ## OTHER
 URxvt*scrollBar:		false
+URxvt.internalBorder:	10
 
 ## Font settings
-URxvt.font:				xft:TerminessTTF Nerd Font:size=16
+URxvt.font:				xft:TerminessTTF Nerd Font:size=14
 URxvt.letterSpace:		-1
