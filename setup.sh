@@ -65,5 +65,3 @@ case "$1" in
 	"-test") test_pkg "$@";;
 	*) print_usage;;
 esac
-
-exit 0
