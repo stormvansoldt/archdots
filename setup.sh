@@ -17,20 +17,16 @@ add_dots () {
 	# If there is no additional command line arguments, attempt to symlink every
 	# folder in the current directory
 	if [[ $# -eq 1 ]]; then
-		printf '%s\n' "==> Linking all packages"
+		printf '%s\n' "===> Linking all packages"
 		PACKAGES=(*/)
 	else
 		tmp=("$@")
 		PACKAGES=("${tmp[@]:1}")
 	fi
 
-	stow -vnS "$PACKAGES"
-
-	exit 1
-
 	for PKG in "${PACKAGES[@]}"; do
 		printf '%s\n' "==> Linking $PKG package"
-		stow -vnS $PKG
+		stow -vnS $PKG		# Add error handling
 	done
 }
 
@@ -52,15 +48,7 @@ check_stow () {
 }
 
 print_usage () {
-	echo "Usage: setup.sh [add] [backup] [replace]"
-}
-
-# Requires one argument
-test_pkg () {
-	echo "Calling from function: $#"
-	for var in "$@"; do
-		printf '%s\n' "$var"
-	done
+	echo "Usage: ./setup.sh [-add] [-backup] [-replace]"
 }
 
 # Parse script arguments
@@ -74,7 +62,6 @@ case "$1" in
 	"-add") add_dots "$@";;
 	"-backup") backup_dots "$@";;
 	"-replace") replace_dots "$@";;
-	"-check") check_stow;;
 	"-test") test_pkg "$@";;
 	*) print_usage;;
 esac
