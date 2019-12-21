@@ -10,13 +10,27 @@ if [[ $STOW_DIR != "$(pwd)" ]]; then
 	cd $STOW_DIR
 fi
 
-PACKAGES=$(ls -d */)
+# Set the global argument variables
 
 # Symlink the dotfiles to the $HOME directory
 add_dots () {
-	echo "[ ] Stowing programs..."
-	for pkg in $PACKAGES; do
-		stow -vnS "$pkg"
+	# If there is no additional command line arguments, attempt to symlink every
+	# folder in the current directory
+	if [[ $# -eq 1 ]]; then
+		printf '%s\n' "==> Linking all packages"
+		PACKAGES=(*/)
+	else
+		tmp=("$@")
+		PACKAGES=("${tmp[@]:1}")
+	fi
+
+	stow -vnS "$PACKAGES"
+
+	exit 1
+
+	for PKG in "${PACKAGES[@]}"; do
+		printf '%s\n' "==> Linking $PKG package"
+		stow -vnS $PKG
 	done
 }
 
@@ -24,9 +38,10 @@ backup_dots () {
 	echo "BACKING UP THE FILES"
 }
 
+## Verify GNU stow is installed
 check_stow () {
-	command -v stow >/dev/null 2>&1 || {
-		echo >&2 "[!] GNU Stow is not installed.";
+	command -v foo >/dev/null 2>&1 || {
+		echo "ERROR: GNU Stow is not installed.";
 		echo "To install Stow, run the following commands:";
 		echo " curl -O https://ftp.gnu.org/gnu/stow/stow-latest.tar.gz"
 		echo " tar -xvpzf stow-latest.tar.gz";
@@ -40,19 +55,27 @@ print_usage () {
 	echo "Usage: setup.sh [add] [backup] [replace]"
 }
 
-## Verify GNU stow is installed
+# Requires one argument
+test_pkg () {
+	echo "Calling from function: $#"
+	for var in "$@"; do
+		printf '%s\n' "$var"
+	done
+}
 
 # Parse script arguments
-if [[ $# -ne 1 ]]; then
+if [[ $# -gt 5 ]]; then
 	printf "[!] Invalid number of arguments.\n\n"
 	print_usage
 	exit 1
 fi
 
-case ${1} in
-	"add") add_dots;;
-	"backup") backup_dots;;
-	"replace") replace_dots;;
+case "$1" in
+	"-add") add_dots "$@";;
+	"-backup") backup_dots "$@";;
+	"-replace") replace_dots "$@";;
+	"-check") check_stow;;
+	"-test") test_pkg "$@";;
 	*) print_usage;;
 esac
 
