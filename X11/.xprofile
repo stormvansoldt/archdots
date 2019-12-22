@@ -1,5 +1,5 @@
 #!/bin/bash
-## Profile that is used by LightDM
+## Profile that is used when any graphical X session is started (via startx or a Desktop Manager)
 
 # Send video output to the VGA cord since my stupid laptop screen doesn't work
 xrandr --output LVDS-1 --off
