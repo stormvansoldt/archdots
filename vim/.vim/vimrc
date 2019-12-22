@@ -61,7 +61,7 @@ call vundle#begin()
 "" Plugins
 Plugin 'stephpy/vim-yaml'
 Plugin 'itchyny/lightline.vim'
-"Plugin 'edkolev/tmuxline.vim'
+Plugin 'edkolev/tmuxline.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'itchyny/vim-gitbranch'
 Plugin 'vimwiki/vimwiki'
