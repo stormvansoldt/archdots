@@ -65,6 +65,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'itchyny/vim-gitbranch'
 Plugin 'vimwiki/vimwiki'
+Plugin 'christoomey/vim-tmux-navigator'
 
 "" End Vundle stuff
 call vundle#end()
