@@ -2,15 +2,15 @@
 
 ## Functions and parameters
 
+# Set some global variables
+TARGET_DIR=$HOME
+DOT_DIR="${HOME}/archdots"
+
 # Verify we are in correct directory, then make a list of stow-able packages
-STOW_DIR="${HOME}/archdots"
-
-if [[ $STOW_DIR != "$(pwd)" ]]; then
-	echo "[ ] Changing directory ==> ${STOW_DIR}"
-	cd $STOW_DIR
+if [[ $DOT_DIR != "$(pwd)" ]]; then
+	echo "[ ] Changing directory ==> ${DOT_DIR}"
+	cd $DOT_DIR
 fi
-
-# Set the global argument variables
 
 # Symlink the dotfiles to the $HOME directory
 add_dots () {
@@ -26,7 +26,12 @@ add_dots () {
 
 	for PKG in "${PACKAGES[@]}"; do
 		printf '%s\n' "==> Linking $PKG package"
-		stow -vnS $PKG		# Add error handling
+		stow -vnS $PKG
+		## TODO: Add error handling
+		## Exit codes:
+		## 0 : Success
+		## 1 : Existing target is neither a link or a directory
+		## 2 : Stow directory $DIR does not contain package $PKG
 	done
 }
 
@@ -48,7 +53,7 @@ check_stow () {
 }
 
 print_usage () {
-	echo "Usage: ./setup.sh [-add] [-backup] [-replace]"
+	echo "Usage: ./setup.sh [-add] [-backup] [-replace] [PACKAGE[S]]"
 }
 
 # Parse script arguments
