@@ -28,7 +28,7 @@ add_dots () {
 		printf '%s\n' "==> Linking $PKG package"
 		cd $PKG
 		for FILE in $(ls -A .); do
-			ln -vsrt "$HOME" "$FILE"
+			ln -vsrit "$HOME" "$FILE"
 		done
 		cd ..
 	done
