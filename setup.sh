@@ -17,7 +17,7 @@ add_dots () {
 	# If there is no additional command line arguments, attempt to symlink every
 	# folder in the current directory
 	if [[ $# -eq 1 ]]; then
-		printf '%s\n' "===> Linking all packages"
+		printf '%s\n' "=> Linking all packages"
 		PACKAGES=(*/)
 	else
 		tmp=("$@")
@@ -26,12 +26,11 @@ add_dots () {
 
 	for PKG in "${PACKAGES[@]}"; do
 		printf '%s\n' "==> Linking $PKG package"
-		stow -vnS $PKG
-		## TODO: Add error handling
-		## Exit codes:
-		## 0 : Success
-		## 1 : Existing target is neither a link or a directory
-		## 2 : Stow directory $DIR does not contain package $PKG
+		cd $PKG
+		for FILE in $(ls -A .); do
+			ln -vsrt "$HOME" "$FILE"
+		done
+		cd ..
 	done
 }
 
@@ -39,21 +38,8 @@ backup_dots () {
 	echo "BACKING UP THE FILES"
 }
 
-## Verify GNU stow is installed
-check_stow () {
-	command -v foo >/dev/null 2>&1 || {
-		echo "ERROR: GNU Stow is not installed.";
-		echo "To install Stow, run the following commands:";
-		echo " curl -O https://ftp.gnu.org/gnu/stow/stow-latest.tar.gz"
-		echo " tar -xvpzf stow-latest.tar.gz";
-		echo " cd stow-VERSION";
-		echo " ./configure && make && sudo make install";
-   		exit 1;
-	}
-}
-
 print_usage () {
-	echo "Usage: ./setup.sh [-add] [-backup] [-replace] [PACKAGE[S]]"
+	echo "Usage: ./setup.sh [-add] [-backup] [PACKAGE[S]]"
 }
 
 # Parse script arguments
@@ -66,7 +52,5 @@ fi
 case "$1" in
 	"-add") add_dots "$@";;
 	"-backup") backup_dots "$@";;
-	"-replace") replace_dots "$@";;
-	"-test") test_pkg "$@";;
 	*) print_usage;;
 esac
