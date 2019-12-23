@@ -12,6 +12,8 @@ if [[ $DOT_DIR != "$(pwd)" ]]; then
 	cd $DOT_DIR
 fi
 
+
+
 # Symlink the dotfiles to the $HOME directory
 add_dots () {
 	# If there is no additional command line arguments, attempt to symlink every
