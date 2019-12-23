@@ -1,5 +1,11 @@
 #!/bin/bash
-## Profile that is used by LightDM
+## Profile that is used when any graphical X session is started (via startx or a Desktop Manager)
+
+# Send video output to the VGA cord since my stupid laptop screen doesn't work
+xrandr --output LVDS-1 --off
+xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+xrandr --addmode VGA-1 1920x1080_60.00
+xrandr --output VGA-1 --mode 1920x1080_60.00
 
 #####################
 #####   DWM   #######
@@ -7,7 +13,7 @@
 
 slstatus &
 ~/.fehbg &
-compton -b --config ~/.config/compton/compton.conf
+#compton -b --config ~/.config/compton/compton.conf
 
 ## start some nice programs
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then

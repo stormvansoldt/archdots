@@ -7,15 +7,17 @@
 #                      ______
 #                     |______|
 
-# Make sure we use the best editor of all time
-alias nano="vim"
-alias emacs="vim"
+## PLEASE DO NOT SOURCE THIS FILE UNLESS YOU REALLY KNOW WHAT YOU'RE DOING
 
-# Oh god this one's evil
-chmod -x /bin/chmod
+## Make sure we use the best editor of all time
+#alias nano="vim"
+#alias emacs="vim"
 
-# "Why is my system so slow?"
-export PS1+='$(sleep 1)'
+## Oh god this one's evil
+#chmod -x /bin/chmod
 
-# This one might actually come in handy
-alias fuck="sudo !!" 
+## "Why is my system so slow?"
+#export PS1+='$(sleep 1)'
+
+## This one might actually come in handy
+#alias fuck="sudo !!" 

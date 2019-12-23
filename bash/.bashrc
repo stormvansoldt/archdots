@@ -32,7 +32,7 @@ GIT_ICON=""
 
 # The Editor variable needs to be exported for the system for some reason. no idea why.
 export EDITOR='vim'
-TMUXINATOR_CONFIG="${HOME}/.tmuxinator"
+export PATH=$PATH:/home/storm/.gem/ruby/2.6.0/bin
 
 #####################
 ###   FUNCTIONS   ###
