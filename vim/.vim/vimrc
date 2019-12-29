@@ -66,6 +66,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'itchyny/vim-gitbranch'
 Plugin 'vimwiki/vimwiki'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 "" End Vundle stuff
 call vundle#end()
@@ -102,7 +104,7 @@ set laststatus=2    " Required for lightline to show up
 """"""""""""""
 " Set vimwiki to use markdown instead of wiki syntax
 let g:vimwiki_global_ext = 0
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/.vim/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 """""""""""""""""
 "  KEYBINDINGS  "
