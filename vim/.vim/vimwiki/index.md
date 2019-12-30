@@ -8,6 +8,7 @@ Template text, replace later.
 * [gitbatch](https://github.com/isacikgoz/gitbatch): Track all git repositories
 * [scli](https://github.com/isamert/scli): Signal Messenger CLI
 * [bat](https://github.com/sharkdp/bat): Linux cat(1) clone
+* [tuir](https://gitlab.com/ajak/tuir/): Reddit TUI
 
 
 ## References
