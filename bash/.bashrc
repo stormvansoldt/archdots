@@ -1,6 +1,10 @@
-#
-# ~/.bashrc
-#
+#  _               _              
+# | |__   __ _ ___| |__  _ __ ___ 
+# | '_ \ / _` / __| '_ \| '__/ __|
+# | |_) | (_| \__ \ | | | | | (__ 
+# |_.__/ \__,_|___/_| |_|_|  \___|
+#                                
+
 
 # All alias definitions are going into the .bash_aliases file
 if [ -f ~/.bash_aliases ]; then
@@ -40,7 +44,10 @@ export PATH=$PATH:/home/storm/.gem/ruby/2.6.0/bin
 
 ## Used to justify text to the right side of the screen
 rightprompt() {
-	printf '%s%*s%s' "$GRN" $COLUMNS "$1" "$RST"
+	PS1L=$PWD
+	if [[ $PS1L/ = "$HOME"/* ]]; then PS1L=\~${PS1L#$HOME}; fi
+	PS1R=$USER@$HOSTNAME
+	printf "%s%$(($COLUMNS-${#PS1L}))s" "$PS1L" "$PS1R"
 }
 
 ## Set the PS1 prompt 
@@ -67,6 +74,7 @@ prompt_command() {
 }
 
 PROMPT_COMMAND=prompt_command
+#PROMPT_COMMAND=rightprompt
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
