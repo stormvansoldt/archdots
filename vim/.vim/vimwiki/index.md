@@ -9,6 +9,7 @@ Template text, replace later.
 * [scli](https://github.com/isamert/scli): Signal Messenger CLI
 * [bat](https://github.com/sharkdp/bat): Linux cat(1) clone
 * [tuir](https://gitlab.com/ajak/tuir/): Reddit TUI
+* [tmuxinator](https://github.com/tmuxinator/tmuxinator): Save and go back to tmux sessions
 
 
 ## References
