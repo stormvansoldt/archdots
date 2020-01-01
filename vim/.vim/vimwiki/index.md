@@ -14,3 +14,5 @@ Template text, replace later.
 
 ## References
 * [[Markdown Cheat Sheet]]
+* [[HOW TO FIX ACPI ERRORS ON INTEL SKYLAKE CHIPS]]
+* 
