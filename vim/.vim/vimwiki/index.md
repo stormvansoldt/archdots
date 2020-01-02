@@ -10,6 +10,7 @@ Template text, replace later.
 * [bat](https://github.com/sharkdp/bat): Linux cat(1) clone
 * [tuir](https://gitlab.com/ajak/tuir/): Reddit TUI
 * [tmuxinator](https://github.com/tmuxinator/tmuxinator): Save and go back to tmux sessions
+* [borg](https://borgbackup.readthedocs.io): Easy encrypted backups from the terminal
 
 
 ## References
