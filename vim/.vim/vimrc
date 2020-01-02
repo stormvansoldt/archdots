@@ -31,7 +31,9 @@ set wrap
 
 " Allows us to access moar colors
 let base16colorspace=256
-"set t_Co=256
+if !has('gui_running')
+	  set t_Co=256
+  endif
 
 " Display options
 set showcmd
@@ -76,7 +78,7 @@ filetype plugin indent on
 """""""""""""""
 "" Configuration for the status line
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
+    \ 'colorscheme': 'nord',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
