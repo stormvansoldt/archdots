@@ -47,9 +47,9 @@ set encoding=utf-8
 """"""""""""""""""""""
 
 "" Color scheme
-colorscheme wombat
-hi Normal guibg=NONE ctermbg=NONE
-hi NonText ctermbg=NONE
+colorscheme nord
+"hi Normal guibg=NONE ctermbg=NONE
+"hi NonText ctermbg=NONE
 
 """"""""""""
 "  VUNDLE  "
