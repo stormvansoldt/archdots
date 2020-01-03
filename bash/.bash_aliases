@@ -28,6 +28,7 @@ alias l='ls -CF'
 # git
 alias gstats='git status -s'
 alias gpom='git push origin master'
+alias gtree='git log --graph --abbrev-commit --pretty'
 
 # tmuxinator
 alias mux='tmuxinator'
