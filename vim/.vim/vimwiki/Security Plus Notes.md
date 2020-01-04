@@ -1,0 +1,171 @@
+# Notes for Professor Messer's videos on the Security+ 
+
+## Section 1: Threats, Attacks, and Vulnerabilities
+### 1.1 - Malware
+	- Virus
+		* Malware that can automatically reproduce itself through filesystems, networks, etc.
+		* Make sure that antivirus signature files are updated
+	- Worms
+		* Malware that automatically self-replicates through networks
+		* Well-known worms can be filtered by IPS/IDS, but it's not much use if the worm has already infected your system
+		* Example: WannaCrypt, which took advantage of a vulnerability in M$ SMB to encrypt infected computers
+	- Ransomware
+		* Type of malware that encrypts personal files and demands a payment to decrypt them
+		* In the past it never actually encrypted anything, but...
+	- Crypto-malware
+		* Newer generation of ransomware that actually encrypts everything except for the OS files
+		* Can be avoided by creating frequent, offline backups
+	- Trojan horse
+		* A seemingly innocent application that has embedded malware
+		* Generally circumvents antivirus unless the specific software signature is already in the signature file
+	- Backdoors
+		* Non-obvious entryways into a computer system
+		* Can be created by malware, or by dumbass software/hardware manufacturers.
+	- RAT (Remote Access Tool/Trojan)
+		* Installs into the OS as a system service and provides complete control over a machine
+		* Usually has a user-friendly client that the attacker uses to control the machine
+	- Rootkits
+		* Malware that modifies the kernel of the OS to make itself completely invisible to the operating system
+	- Keyloggers
+		* Logs your keystrokes and sends them to a remote attacker
+	- Adware and Spyware
+		* Windows OS lol
+	- Bots and botnets
+		* Infected machines are part of a group that can be used for various things like crypo mining or DDOS attacks
+	- Logic bombs
+		* Specific type of malware that waits for a specific event to occur before it is activated
+		* Usually time bombs, generally deletes data or takes down systems
+
+### 1.2 - Attack Types
+	* Phishing
+		- Social engineering + spoofing generally delivered by email, IM, etc
+		- Generally impersonates login pages to websites
+		- ALWAYS LOOK AT THE URL
+	* Tailgating
+		- Techinque where someone uses someone else to gain access to a restricted area/building
+		- Generally performed by dressing as the target employees or following someone behind a badge-restricted door
+		- Prevention done by mantraps, badge requirements, and training employees to check people for badges/ID
+	* Dumpster diving
+		- Literally going through an organization's trash to find information
+		- PREVENTION: Shred all your shit
+	* Shoulder surfing
+		- Looking over someone's shoulder to attempt to view information on their screen or view typed passwords
+	* Watering hole attacks
+		- A technique where attackers will attempt to attack locations that a target visits instead of the target themselves
+	* Social Engineering
+		- Non-technical, atatempting to gain information from people instead of machines
+		- Usually happens on the phone or email, but it can also happen in person
+	* Denial of Service
+		- Attacks that take down a service either by overloading the service, or by exploiting a bug causing it to shut down
+	* Man in the middle
+		- Attacker is sniffing traffic between you and the destination
+		- Can happen with TCP/IP, bluetooth, and even USB protocols
+		- Can be exploited with ARP and/or DNS poisoning
+	* Buffer overflows
+		- Overwriting a buffer of memory to spill over into other areas of memory that aren't supposed to be accessed
+		- Difficult to find and reproduce consistently, but can be extremely dangerous when done so
+	* Data Injection
+		- The ability to input arbitrary code into applications
+		- SQLi is the most common form of data injection
+		- XML injections can inject arbitrary XML to retrieve information
+		- All user input should be untrusted, make sure to put proper protections into place
+	* Cross-site scripting (XSS)
+		- Non-persistent (reflected) XSS
+			* Website allows script to run in user input (commonly found in search boxes)
+			* Attacker can send link with included XSS to targets and can retrieve cookies and session IDs
+		- Persistent (stored) XSS
+			* Attacker posts message with included payload to a forum or social network
+			* Payload is stored on the server and anyone who loads the web page gets screwed by it
+		- Prevention:
+			* Client side: disable JavaScript. Good websites shouldn't/don't need it anyways.
+			* Server side: I N P U T  V A L I D A T I O N
+	* Cross-site request forgery (XSRF/CSRF):
+		- Forces an end user to execute unwanted actions on a web application where they are currently authenticated
+		- Takes advantage of the trust that a web application has for the user('s browser)
+		- Exploitation:
+			1. Attacker creates a crafted URL and sends it to a victim who is already logged into a service (ie. banking site)
+			2. User clicks the link which sends the malicious request under the privileges of the vicim
+	* Privilege escalation:
+		- An attacker is able to gain higher level access than they are normally authorized
+		- Generally exploited by a bug or design flaw in software
+	* DNS Poisoning:
+		- Changing information in a DNS server to redirect victims to malicious websites
+		- Can also change the /etc/hosts file on a local machine (however this requires root access so...)
+	* Domain hijacking:
+		- Gaining access to the domain registration to manually change the DNS server used by the domain itself
+	* Zero-day attacks:
+		- Exploits using vulnerabilities that no one knew about before
+	* Replay attacks:
+		- Attackers capture network information via different methods
+		- This information can then be sent from the attacker to the target server in the context of the victim
+		- HTTPS basically makes this obsolete, but stupid people still don't use SSL/TLS on their web servers
+	* Typosquatting:
+		- Create domains for common typos of popular websites
+		- Can be used to deliver malicious JavaScript, generate ad revenue, or even install malware on the victim machine
+	* Clickjacking:
+		- When a user clicks a button on a webpage with an invisible iframe layered on top of the button
+		- Commonly used on mobile devices (specifically Android)
+	* Session hijacking:
+		- Attackers use a victim's session id to authenticate as that user to a remote service
+		- Prevention: Once again, just set up HTTPS or use a VPN when out in public networks
+	* Driver manipulation:
+		- Embedding malware in system drivers to be invisible to OS processes
+		- Examples:
+			* Linux kernel modules
+			* Windows Compatibility Mode ("shimming" a layer of an OS between an application and the host OS)
+	* Spoofing:
+		- Type of attack where a device/person pretends to be something that it is not
+		- Examples:
+			* Email address spoofing
+			* Caller ID spoofing
+			* MITM attacks - attacker pretends to be both endpoints
+			* MAC spoofing - allows access to environments where MAC-based ACLs are implemented
+			* IP Address spoofing - used in DNS amplification DDoS attacks
+	* Wireless replay attacks:
+		- Similar to normal replay attacks, but with additional potential targets
+		- Example: Cracking the WEP protocol by utilizing ARP requests to gather IV packets
+	* Rogue access points and evil twins:
+		- Rogue access points:
+			- Unknown AP connected to a network via ethernet cable
+			- Prevention: Configure 802.1X (Network Access Control)
+		- Evil Twins:
+			- Creates a wireless network identical to the target network and attempts to have clients connect to it
+			- Utilized as a MItM tool
+	* Wireless Jamming:
+		- Simple denial of service of radio frequency devices by generating a lot of bad RF signals
+	* WPS (Wifi Protected Setup)  Attacks:
+		- Just turn this off, there has been a design flaw from the beginning
+		- The 8 digit PIN is really 7 digits + a checksum
+		- The WPS process validates each half of the PIN (first 4 digits, then second 3 digits)
+		- Prevention: Enable lockout and slowdown functions to prevent brute forcing
+	* Bluejacking and Bluesnarfing:
+		- Bluejacking: Sending unsolicited messages to bluetooth devices
+		- Bluesnarfing: Allows someone to access data on a mobile device over Bluetooth
+	* RFID and NFC attacks:
+		- RFID
+			- Data capture for replay attacks
+			- Write arbitrary data to the tag
+			- DoS
+			- Decryption keys are available on Google (lmao)
+		- NFC
+			- Remote capture
+			- DoS
+	* Wireless Disassociation attacks:
+		- Continually send 802.11 reset frames to a target for DoS
+		- Attackers can then sniff the target device's attempts to reconnect to the network to gather network credentials
+	* Cryptographic attacks:
+		- Attacks on cryptographic methods or implementations
+		- Known Plaintext Attack:
+			- Attacker has the encrypted data and some of the plaintext and can use this to fully decrypt
+		- Rainbow tables:
+			- Pre-generated list of password hashes that greatly increases the cracking speed
+			- Non-effective against salted hashes
+		- Dictionary attacks:
+			- Use the most common dictionary words to bruteforce passwords
+		- Brute force:
+			- Full YOLO, try every possible combination to guess the password
+			- Usually best done offline with GPU acceleration
+		- Birthday attack:
+			- Hash collision: where two separate plaintexts produce the same hash value
+		- Downgrade attack:
+			- Force a target to use a less-strong cryptographic method
