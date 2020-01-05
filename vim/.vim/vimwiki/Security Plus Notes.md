@@ -169,3 +169,87 @@
 			- Hash collision: where two separate plaintexts produce the same hash value
 		- Downgrade attack:
 			- Force a target to use a less-strong cryptographic method
+
+### 1.3 - Threat Actors
+	* Threat actor: an entity responsible for an event that has an impact on the safety of another entity
+	* Examples:
+		- Script kiddies
+			- Runs pre-made scripts without any knowledge of how the scripts actually work
+			- usually get them from the internet
+			- No formal funding, looking for easy exploits
+		- Hacktivist:
+			- Usually attempts to create social change/has a political agenda
+			- Very specific attacks such as DDoS, DoS, website defacing, etc.
+		- Organized crime:
+			- Professional criminals ultimately motivated by money
+			- Generally sophisticated as they can afford the best hardware/software
+			- Comprised of multiple people
+		- Nation states:
+			- Governments (CIA, KGB, etc)
+			- Extremely sophisticated as they are funded by the government
+			- Example: USA and Israel destroyed nuclear centrifuges with the Stuxnet worm
+		- Insiders:
+			- Good luck. Security in layers, make sure the internal network is safe against attacks
+		- Competitors:
+			- Try to bring down your system, harm your reputation, or find industry secrets
+			- High level of sophistication
+
+### 1.4 - Penetration Testing
+	* Simulating an attack against another device or network
+	* Penetration testing is vulnerability testing + actually attemting to exploit the vulnerability
+	* Can be contracted to third party companies or by a dedicated security professional in the organization
+	* Starts with passive reconnaissance
+		- Find infomrmation on social media, online forums, social engineering, the org's website, etc
+		- Try to gather as much info without triggering any alarms
+	* Active reconnaissance
+		- Ping scans, port scans, DNS queries, OS fingerprinting
+		- Service scans and version scans
+		- This will generally start triggering alarms
+	* Exploiting vulns
+		- Try to break into the system using the info you found during recon
+		- Gain a foothold
+		- Pivot
+		- Priviledge escalation
+		- Password brute-force, DB injection, buffer overflows, etc
+		- This will DEFINITELY trigger alarms
+	* The process:
+		- Initial exploitation (getting into the network)
+		- Persistence (set up a backdoor, change/verify user passwords)
+		- Pivoting (jumping from device to device once inside the network)
+	* Black box testing:
+		- Pentesting team has zero knowledge of the systems under attack
+	* White box testing:
+		- Giving the testers all the information about the systems under attack
+	* Grey box testing:
+		- Mix of black and white
+		- Focus on specific services/systems/networks
+
+### 1.5 - Vulnerability Scanning
+	* Unlike a full penetration test, vuln scans generally are not very invasive
+	* Simply checking if known vulnerabilities are present in a network/system
+	* The goal is to gather as much information as possible
+	* Examples:
+		- Passive packet capturing
+		- Port scans
+		- Network mapping
+		- OS fingerprinting
+		- Service and version enumeration
+
+### 1.6 - Vulnerability Types
+	* Race conditions:
+		- When two actions happen at the same time
+		- Can be very dangerous if not accounted for
+	* End-of-life:
+		- No vendor support/security updates
+		- Example: M$ didn't update EOL systems to protect against SMB vuln, and because of that we got WannaCrypt. Great job...
+	* Embedded systems:
+		- IoT devices
+		- Running outdated software, rarely/never updates
+		- "The S in 'IoT' stands for Security"
+		- Linksys and D-Link are the most egregious examples of this
+	* Improper input handling:
+		- ALWAYS CHECK ANYTHING THE USER CAN INPUT
+		- Causes code injections, SQL injections, buffer overflows, etc
+	* Improper error handling:
+		- Error messages should not provide ANY detailed information to the end-user about the interal systems
+		- Turn off your stupid SQL and PHP errors holy crap it's not that hard
