@@ -253,3 +253,47 @@
 	* Improper error handling:
 		- Error messages should not provide ANY detailed information to the end-user about the interal systems
 		- Turn off your stupid SQL and PHP errors holy crap it's not that hard
+
+
+# Section 2 - Technologies and Tools
+### 2.1 - Security Components
+	* Firewalls:
+		- Controls the flow of inbound and outbound network content
+		- Network-based:
+			- Traditionally OSI Layer 4 (transport layer), but nowadays some can filter up to OSI Layer 7 (application)
+			- Can make good VPN concentrators by encrypting traffic
+			- Most firewalls can be layer 3 devices (routers)
+		- Stateless:
+			- Does not keep track of traffic flows
+			- Each packet is individually examined and does not remember history
+			- Traffic needs to be allowed for both outbound and the resulting inbound connection (eg. HTTP connections)
+		- Stateful:
+			- Remembers the "state" of the session
+			- Only requires one rule, the firewall then remembers any active connection and will forward that traffic without an additional inbound rule
+		- Application-based:
+			- Watches traffic at the packet level and examines the data in each of those packets
+			- In network-based firewalls for SQL, Twitter, YT, etc.
+			- IPS use this to allow or disallow traffic based on the application
+		- Access Control Lists (ACLs):
+			- Allow or disallow traffic based on groupings of categories, or tuples
+			- Follows a logical path, usually top to bottom of the list
+	* VPN Concentrators:
+		- Creates a VPN to use an encrypted tunnel from a device to an endpoint
+		- Device that is specifically designed to encrypt and decrypt network traffic
+		- Commonly integrated with hardware firewalls and sits between an internal network and the internet
+		- (INTERNAL NETWORK) ---- (VPN CONCENTRATOR) ==== [ENCRYPTED TUNNEL OVER INTERNET] ==== (ENDPOINT DEVICE)
+		- Can also be used with another VPN concentrator at another site to create site-to-site encrypted communication
+		- IPSec allows Layer 3 encryption which also allows for packet signing to prevent replay attacks
+			- AH (Authentication Header)
+			- ESP (Encapsulation Security Payload)
+	* IDS:
+		- Can be network-based or host-based
+		- If it identifies a potential exploit, it will inform you by sending an alert
+	* IPS:
+		- Same as IDS but it actually prevents exploits from happening
+		- Passive monitoring:
+			- The device gets a copy of the packet and sends a TCP RST frame to both source and destination
+			- Occurs after the fact since it is not sitting between the network and the internet
+		- Inline monitoring:
+			- The IPS sits directly between the internet and the network
+			- Allows the IPS to drop packets before they get to their destination
