@@ -297,3 +297,35 @@
 		- Inline monitoring:
 			- The IPS sits directly between the internet and the network
 			- Allows the IPS to drop packets before they get to their destination
+	* Routers:
+		- Routes traffic between IP subnets
+		- Layer 3 devices (Network) - Makes routing decisions based on IP addresses
+		- Can use ACLs to allow or deny traffic, NAT, or QoS
+		- Anti-spoofing is needed to prevent attackers from using someone else's IP address:
+			- Example is to block RFC 1918 addresses from routing to/from the internet
+			- Enable Reverse Path Forwarding (RPF) - The response to an inbound packet should return the same way. Otherwise, drop the packet
+	* Switches:
+		- Briding done in hardware (OSI Layer 2: Data link)
+		- Create switch port security by creating separate VLANs as the inside of the network is relatively insecure
+		- Network Access Control (NAC):
+			- IEEE 802.1X
+			- Authentication is needed to access interfaces on the switch
+			- Administratively disable unused ports to prevent rogue attackers
+			- Duplicate MAC address checking to prevent spoofing
+		- Loop prevention:
+			- Since Layer 2 devices don't check packets, two switches could send packets back and forth forever
+			- Spanning Tree Protocol:
+				- IEEE 802.1D
+				- Created to prevent loops in switched networks
+				- Automatically configures itself as long as it's enabled, even when there are changes to the networks
+		- Flood guard:
+			- Prevents DoS from providing a ton of MAC addresses to a switch
+			- Admin can configure a maximum number of source MAC addresses on an interface
+		- Layer 3 switches:
+			- Adds L3 functionality to a physical switch
+	* Proxies:
+		- Device that sits between users and the internet to filter content
+		- Can perform caching, URL filtering, content scanning, etc
+		- Some need to be manually configured, some are invisible/transparent
+		- Example: NAT:
+			- 
