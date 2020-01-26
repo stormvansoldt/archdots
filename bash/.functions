@@ -1,0 +1,70 @@
+#!/bin/bash
+
+#     __                  _   _                 
+#    / _|_   _ _ __   ___| |_(_) ___  _ __  ___ 
+#   | |_| | | | '_ \ / __| __| |/ _ \| '_ \/ __|
+#  _|  _| |_| | | | | (__| |_| | (_) | | | \__ \
+# (_)_|  \__,_|_| |_|\___|\__|_|\___/|_| |_|___/
+
+# Holds all of our cool bash functions
+
+## Set the PS1 prompt
+prompt_command() {
+  # First let's check to see which git branch we are in
+  BRANCH="$(git branch 2>/dev/null | grep '^*' | colrm 1 2)"
+
+  PS1='\[$RED\][\[$WHT\]\u\[$RED\]@\[$WHT\]\h\[$RED\]] \[$BLU\][\[$WHT\]\w\[$BLU\]] '
+
+  # If we are in a git repo, add the branch to the PS1 line and check to see
+  # if changes need to be staged or committed to the branch
+  if [ -n "$BRANCH" ]; then
+        PS1+='\[$GRN\]['
+        if [ "$(git status -s | wc -l)" -gt 0 ]; then
+                PS1+='\[$RED\]'
+        else
+                PS1+='\[$BLU\]'
+        fi
+        PS1+=' \[$WHT\]$BRANCH\[$GRN\]] '
+
+  fi
+  PS1+='\[$WHT\]\[$BOLD\]\$\[$RST\] '
+  #PS1+='\[$RST\][\[$RED\]\u \[$WHT\]\w]:\[$BOLD\]$\[$RST\] '
+}
+
+
+## Used to extract a wide range of files with one simple command
+extract() {
+    local c e i
+
+    (($#)) || return
+
+    for i; do
+        c=''
+        e=1
+
+        if [[ ! -r $i ]]; then
+            echo "$0: file is unreadable: \`$i'" >&2
+            continue
+        fi
+
+        case $i in
+            *.t@(gz|lz|xz|b@(2|z?(2))|a@(z|r?(.@(Z|bz?(2)|gz|lzma|xz)))))
+                   c=(bsdtar xvf);;
+            *.7z)  c=(7z x);;
+            *.Z)   c=(uncompress);;
+            *.bz2) c=(bunzip2);;
+            *.exe) c=(cabextract);;
+            *.gz)  c=(gunzip);;
+            *.rar) c=(unrar x);;
+            *.xz)  c=(unxz);;
+            *.zip) c=(unzip);;
+            *)     echo "$0: unrecognized file extension: \`$i'" >&2
+                   continue;;
+        esac
+
+        command "${c[@]}" "$i"
+        ((e = e || $?))
+    done
+    return "$e"
+}
+
