@@ -26,8 +26,8 @@ BOLD="$(tput bold)"
 
 shopt -s extglob
 # Source our exports file
-if [ -f ~/.config/bash/.exports ]; then
-	. ~/.config/bash/.exports
+if [ -f ~/.exports ]; then
+	. ~/.exports
 fi
 
 # All alias definitions are going into the .bash_aliases file
@@ -36,8 +36,8 @@ if [ -f ~/.aliases ]; then
 fi
 
 # Source our other bash files
-if [ -f /home/storm/archdots/bash/.functions ]; then
-	. ~/archdots/bash/.functions
+if [ -f ~/.functions ]; then
+	. ~/.functions
 fi
 
 force_color_prompt=yes
