@@ -5,6 +5,6 @@
 # |_.__/ \__,_|___/_| |_| | .__/|_|  \___/|_| |_|_|\___|
 #                         |_|                           
 
-BASH_CONFIG_DIR=~/.config/bash
+BASH_CONFIG_DIR=~
 
 [[ -f "$BASH_CONFIG_DIR/.bashrc" ]] && . "$BASH_CONFIG_DIR/.bashrc" 
