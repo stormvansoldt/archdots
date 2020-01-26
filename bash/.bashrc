@@ -5,6 +5,7 @@
 # |_.__/ \__,_|___/_| |_|_|  \___|
 #                                
 
+shopt -s extglob
 
 # All alias definitions are going into the .bash_aliases file
 if [ -f ~/.bash_aliases ]; then
@@ -42,6 +43,43 @@ export PATH=$PATH:/home/storm/.gem/ruby/2.6.0/bin
 ###   FUNCTIONS   ###
 #####################
 
+## Used to extract a wide range of files with one simple command
+extract() {
+    local c e i
+
+    (($#)) || return
+
+    for i; do
+        c=''
+        e=1
+
+        if [[ ! -r $i ]]; then
+            echo "$0: file is unreadable: \`$i'" >&2
+            continue
+        fi
+
+        case $i in
+            *.t@(gz|lz|xz|b@(2|z?(2))|a@(z|r?(.@(Z|bz?(2)|gz|lzma|xz)))))
+                   c=(bsdtar xvf);;
+            *.7z)  c=(7z x);;
+            *.Z)   c=(uncompress);;
+            *.bz2) c=(bunzip2);;
+            *.exe) c=(cabextract);;
+            *.gz)  c=(gunzip);;
+            *.rar) c=(unrar x);;
+            *.xz)  c=(unxz);;
+            *.zip) c=(unzip);;
+            *)     echo "$0: unrecognized file extension: \`$i'" >&2
+                   continue;;
+        esac
+
+        command "${c[@]}" "$i"
+        ((e = e || $?))
+    done
+    return "$e"
+}
+
+
 ## Used to justify text to the right side of the screen
 rightprompt() {
 	PS1L=$PWD
@@ -49,6 +87,7 @@ rightprompt() {
 	PS1R=$USER@$HOSTNAME
 	printf "%s%$(($COLUMNS-${#PS1L}))s" "$PS1L" "$PS1R"
 }
+
 
 ## Set the PS1 prompt 
 prompt_command() {
