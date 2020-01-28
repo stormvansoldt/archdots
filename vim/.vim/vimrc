@@ -44,6 +44,13 @@ set matchpairs+=<:>
 " Encoding
 set encoding=utf-8
 
+set noshowmode      " Prevents the extra mode from displaying
+
+" Remember cursor's position in a file when re-opening it
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
+
 """"""""""""""""""""""
 "  COLORS AND STUFF  "
 """"""""""""""""""""""
@@ -68,6 +75,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'itchyny/vim-gitbranch'
 Plugin 'vimwiki/vimwiki'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'preservim/nerdtree'
 
 "" End Vundle stuff
 call vundle#end()
@@ -115,6 +123,10 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Switch between open buffers using CTRL + N P
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
+
 " Map the <Space> key to toggle a selected fold opened/closed
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
@@ -144,12 +156,23 @@ let g:netrw_winsize = 25
 "  autocmd VimEnter * :Lexplore
 "augroup END
 
-set noshowmode      " Prevents the extra mode from displaying
+""""""""""""""
+"  NERDTREE  "
+""""""""""""""
+"" Opening and closing
+" automatically start NERDtree when vim opens
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-" Remember cursor's position in a file when re-opening it
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-endif
+" open and close NERDtree by using \ + f
+nnoremap <Leader>f :NERDTreeToggle<Enter>
+
+" automatically close tab if only remaining window is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+"" Customization
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 """"""""""""""""""""
 "  CUSTOM FOLDING  "
