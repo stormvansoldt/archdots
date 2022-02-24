@@ -1,7 +1,5 @@
 # Main Wiki Page
 
-Template text, replace later.
-
 ## Cool command line programs
 * [tmux](https://github.com/tmux/tmux): Terminal multiplexer
 * [tizonia](https://github.com/tizonia/tizonia-openmax-il): Soundcloud + Spotify music player
@@ -12,6 +10,8 @@ Template text, replace later.
 * [tmuxinator](https://github.com/tmuxinator/tmuxinator): Save and go back to tmux sessions
 * [borg](https://borgbackup.readthedocs.io): Easy encrypted backups from the terminal
 
+## Templates
+* [[Directory structure]]
 
 ## References
 * [[Markdown Cheat Sheet]]
