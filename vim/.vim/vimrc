@@ -66,24 +66,25 @@ colorscheme nord
 "  VUNDLE  "
 """"""""""""
 "" Enable Vundle stuff
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
 
 "" Plugins
-Plugin 'stephpy/vim-yaml'
-Plugin 'itchyny/lightline.vim'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'itchyny/vim-gitbranch'
-Plugin 'vimwiki/vimwiki'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'preservim/nerdtree'
-Plugin 'majutsushi/tagbar'
-Plugin 'ryanoasis/vim-devicons'
+"Plugin 'VundleVim/Vundle.vim'
+"Plugin 'stephpy/vim-yaml'
+"Plugin 'itchyny/lightline.vim'
+"Plugin 'edkolev/tmuxline.vim'
+"Plugin 'airblade/vim-gitgutter'
+"Plugin 'itchyny/vim-gitbranch'
+"Plugin 'vimwiki/vimwiki'
+"Plugin 'christoomey/vim-tmux-navigator'
+"Plugin 'preservim/nerdtree'
+"Plugin 'majutsushi/tagbar'
+"Plugin 'ryanoasis/vim-devicons'
 
 "" End Vundle stuff
-call vundle#end()
-filetype plugin indent on
+"call vundle#end()
+"filetype plugin indent on
 
 """""""""""""""
 "  LIGHTLINE  "
@@ -163,14 +164,14 @@ let g:netrw_winsize = 25
 """"""""""""""
 "" Opening and closing
 " automatically start NERDtree when vim opens
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " open and close NERDtree by using \ + f
-nnoremap <Leader>f :NERDTreeToggle<Enter>
+"nnoremap <Leader>f :NERDTreeToggle<Enter>
 
 " automatically close tab if only remaining window is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "" Customization
 let NERDTreeMinimalUI = 1
