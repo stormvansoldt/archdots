@@ -89,26 +89,17 @@ colorscheme nord
 """""""""""""""
 "  LIGHTLINE  "
 """""""""""""""
-"" Configuration for the status line
+" Configuration for the status line
 let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
     \ },
     \ 'component_function': {
-    \   'gitbranch': 'LightlineGitbranch',
+    \   'gitbranch': 'gitbranch#name',
     \ },
     \ }
 
-"" Functions
-" Sets the current git branch
-"function! LightlineGitbranch()
-"    if exists('*gitbranch#name')
-"        let branch = gitbranch#name()
-"    return branch !=# '' ? ' '.branch : ''
-"    endif
-"    return ''
-"endfunction
 
 """"""""""""""
 "  VIMWIKI   "
