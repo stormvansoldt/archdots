@@ -10,3 +10,6 @@
 [submodule "vim/.vim/pack/plugins/start/vim-devicons"]
 	path = vim/.vim/pack/plugins/start/vim-devicons
 	url = https://github.com/ryanoasis/vim-devicons
+[submodule "vim/.vim/pack/plugins/start/vim-gitbranch"]
+	path = vim/.vim/pack/plugins/start/vim-gitbranch
+	url = https://github.com/itchyny/vim-gitbranch
