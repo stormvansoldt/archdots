@@ -91,7 +91,7 @@ colorscheme nord
 """""""""""""""
 "" Configuration for the status line
 let g:lightline = {
-    \ 'colorscheme': 'nord',
+    \ 'colorscheme': 'wombat',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
     \ },
@@ -102,13 +102,13 @@ let g:lightline = {
 
 "" Functions
 " Sets the current git branch
-function! LightlineGitbranch()
-    if exists('*gitbranch#name')
-        let branch = gitbranch#name()
-    return branch !=# '' ? ' '.branch : ''
-    endif
-    return ''
-endfunction
+"function! LightlineGitbranch()
+"    if exists('*gitbranch#name')
+"        let branch = gitbranch#name()
+"    return branch !=# '' ? ' '.branch : ''
+"    endif
+"    return ''
+"endfunction
 
 """"""""""""""
 "  VIMWIKI   "
