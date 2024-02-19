@@ -15,15 +15,15 @@ $HOME
 
 ### Sample Project Structure
 $HOME/dev/
-         /my-prog/
-                 /src/
-                     /include/
-                             /my-prog.h
-                     /my-prog.cpp
-                 /build-debug/
-                             /src/
-                                  /my-prog
-                 /build-release/
-                               /src/
-                                   /my-prog
-                 /Makefile
+        /my-prog/
+            /src/
+                /include/
+                        /my-prog.h
+                        /my-prog.cpp
+                /build-debug/
+                            /src/
+                                /my-prog
+                /build-release/
+                            /src/
+                                /my-prog
+        /Makefile
