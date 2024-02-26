@@ -30,6 +30,9 @@ alias gstats='git status -s'
 alias gpom='git push origin master'
 alias gtree='git log --graph --abbrev-commit --pretty'
 
+# hehe
+alias fucking='sudo'
+
 # tmuxinator
 alias mux='tmuxinator'
 
