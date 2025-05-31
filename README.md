@@ -1,6 +1,6 @@
 # Automated Dotfile Deployment
 
-God I love customizing stuff. I also love automating stuff, so making a repo that automates my customizations makes me harder than Kate Upton in the Wolf of Wall Street movie. 
+God I love customizing stuff. I also love automating stuff, so making a repo that automates my customizations makes me harder than seeing Kate Upton in the Wolf of Wall Street movie. 
 
 This deployment package is designed to be quick, easy, modular, and sexy as hell.
 
